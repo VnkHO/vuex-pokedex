@@ -25,7 +25,7 @@ import "../PokemonMoves/PokemonMoves.scss";
 
 export default {
   name: "PokemonMoves",
-  created() {
+  created(this: any) {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   computed: {

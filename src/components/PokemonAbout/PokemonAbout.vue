@@ -30,16 +30,16 @@ import "../PokemonAbout/PokemonAbout.scss";
 
 export default {
   name: "PokemonAbout",
-  data: function() {
+  data: function(): any {
     return {
       description: ""
     };
   },
-  created() {
+  created(this: any) {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   methods: {
-    renderFlavor: function(this: any) {
+    renderFlavor: function(this: any): void {
       // Render description
       const pokemon = this.pokemonsSpecies;
       pokemon.flavor_text_entries.some((flavor: any) => {
@@ -75,7 +75,7 @@ export default {
       return Math.round((pokemon.weight * 0.220462 + 0.0001) * 100) / 100;
     }
   },
-  beforeMount(): void {
+  beforeMount(this: any): void {
     // let self = this;
     this.$nextTick((): void => {
       this.renderFlavor();

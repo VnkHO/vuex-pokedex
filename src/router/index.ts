@@ -32,7 +32,7 @@ const routes = [
     component: Pokemon
   },
   {
-    path: '/home',
+    path: '/game',
     name: 'game',
     component: Game,
   },

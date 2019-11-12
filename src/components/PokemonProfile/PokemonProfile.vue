@@ -59,7 +59,7 @@ export default {
       ]
     };
   },
-  created() {
+  created(this: any) {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   methods: {
@@ -106,7 +106,7 @@ export default {
       const pokemon = this.pokemonsSpecies;
       return 255 * (pokemon.hatch_counter + 1);
     },
-    evs(this: any) {
+    evs(this: any): string {
       // Return Effort Value
       const pokemon = this.getPokemonById[0];
       const evs = pokemon.stats.filter((stat: any) => {
@@ -121,7 +121,7 @@ export default {
       });
     }
   },
-  beforeMount(): void {
+  beforeMount(this: any): void {
     // let self = this;
     this.$nextTick((): void => {
       this.renderGenera();

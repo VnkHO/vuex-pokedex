@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="home">
+  <div id="Starter" class="Starter">
     <PokedexStarter />
   </div>
 </template>

@@ -20,7 +20,7 @@ export default {
     }
   },
   methods: {
-    renderClass: function(id: number): string {
+    renderClass: function(this: any, id: number): string {
       const type = this.pokemon.types[id].type.name;
       return `
           'bug': ${type} === 'bug',

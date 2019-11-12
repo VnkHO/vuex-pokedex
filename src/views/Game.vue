@@ -1,10 +1,14 @@
 <template>
-  <div>Game mode</div>
+  <div>
+    <Game />
+  </div>
 </template>
 
 <script>
+import Game from "@/components/Game/Game.vue";
+
 export default {
   name: "game",
-  components: {}
+  components: { Game }
 };
 </script>

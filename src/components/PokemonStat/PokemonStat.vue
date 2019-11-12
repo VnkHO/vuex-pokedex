@@ -89,47 +89,47 @@ export default {
       widthSpecialDefense: 0
     };
   },
-  created() {
+  created(this: any) {
     this.$nextTick((): void => {
       this.renderStat();
       return;
     });
-    const widthHp = setInterval(() => {
+    const widthHp = <any>setInterval((): void => {
       if (this.widthHp < this.hp) {
         this.widthHp += 1;
       } else {
         clearInterval(widthHp);
       }
     }, 10);
-    const widthAttack = setInterval(() => {
+    const widthAttack = <any>setInterval((): void => {
       if (this.widthAttack < this.attack) {
         this.widthAttack += 1;
       } else {
         clearInterval(widthAttack);
       }
     }, 10);
-    const widthDefense = setInterval(() => {
+    const widthDefense = <any>setInterval((): void => {
       if (this.widthDefense < this.defense) {
         this.widthDefense += 1;
       } else {
         clearInterval(widthDefense);
       }
     }, 10);
-    const widthSpecialAttack = setInterval(() => {
+    const widthSpecialAttack = <any>setInterval((): void => {
       if (this.widthSpecialAttack < this.specialAttack) {
         this.widthSpecialAttack += 1;
       } else {
         clearInterval(widthSpecialAttack);
       }
     }, 10);
-    const widthSpecialDefense = setInterval(() => {
+    const widthSpecialDefense = <any>setInterval((): void => {
       if (this.widthSpecialDefense < this.specialDefense) {
         this.widthSpecialDefense += 1;
       } else {
         clearInterval(widthSpecialDefense);
       }
     }, 10);
-    const widthSpeed = setInterval(() => {
+    const widthSpeed = <any>setInterval((): void => {
       if (this.widthSpeed < this.speed) {
         this.widthSpeed += 1;
       } else {
@@ -143,22 +143,22 @@ export default {
       pokemon.stats.map((stat: any) => {
         switch (stat.stat.name) {
           case "hp":
-            return (this.hp = stat["base_stat"]);
+            return (this.hp = stat.base_stat);
             break;
           case "attack":
-            return (this.attack = stat["base_stat"]);
+            return (this.attack = stat.base_stat);
             break;
           case "defense":
-            return (this.defense = stat["base_stat"]);
+            return (this.defense = stat.base_stat);
             break;
           case "speed":
-            return (this.speed = stat["base_stat"]);
+            return (this.speed = stat.base_stat);
             break;
           case "special-attack":
-            return (this.specialAttack = stat["base_stat"]);
+            return (this.specialAttack = stat.base_stat);
             break;
           case "special-defense":
-            return (this.specialDefense = stat["base_stat"]);
+            return (this.specialDefense = stat.base_stat);
             break;
         }
       });

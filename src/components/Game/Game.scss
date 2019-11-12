@@ -1,0 +1,15 @@
+.game {
+
+
+  &__container {
+    background-color: green;
+
+    &-ennemy {
+      background-color: red;
+    }
+
+    &-player {
+      background-color: yellow;
+    }
+  }
+}

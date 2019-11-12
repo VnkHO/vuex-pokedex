@@ -1,14 +1,17 @@
 <template>
-  <div>
-    <Home />
+  <div id="Home" class="Home">
+    <HomeScreen />
+    <!-- <Home /> -->
   </div>
 </template>
 
-<script>
-import Home from "@/components/Home/Home.vue";
+<script lang="ts">
+import Vue from "vue";
+
+import HomeScreen from "@/components/Home/Home.vue";
 
 export default {
-  name: "home",
-  components: { Home }
+  name: "Home",
+  components: { HomeScreen }
 };
 </script>
