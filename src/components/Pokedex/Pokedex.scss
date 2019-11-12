@@ -1,12 +1,89 @@
 .pokedexList {
-
+  
+  position: relative;
+  overflow-x: hidden;
   padding: 4rem 1.4rem;
   background-color: var(--white);
+  
+  &-Loader {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 35vh);
+  }
+
+  &-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(97% / 2);
+    height: 15rem;
+    
+    &--text {
+      padding: 1rem 3rem;
+      font-size: 2rem;
+      color: var(--white);
+      border-radius: 10rem;
+      background-color: var(--red);
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5rem;
+    right: -6rem;
+    display: block;
+    width: 16rem;
+    height: 16rem;
+    background-image: url('../../assets/images/pokeball.svg');
+    background-size: 16rem 16rem;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    object-fit: cover;
+    opacity: .1;
+  }
+
+  
+  &__header {
+    display: flex;
+    margin-bottom: 4rem;
+
+  }
+
+  &__back {
+    position: relative;
+    background-color: red;
+
+    &::before {
+      position: absolute;
+      top: 48%;
+      left: .7rem;
+      content: '';
+      display: inline-flex;
+      border: solid var(--black);
+      border-width: 0 4px 4px 0;
+      display: inline-block;
+      padding: 4px;
+      transform: rotate(135deg) translateY(50%);
+    } 
+
+    &::after {
+      position: absolute;
+      top: 46%;
+      left: .4rem;
+      content: '';
+      display: inline-block;
+      width: 3rem;
+      height: .6rem;
+      background-color: var(--black);
+    }
+  }
 
   &-title {
+    position: relative;
     font-size: 4.2rem;
     font-weight: 900;
-    margin-bottom: 4rem;
+    margin-left: 6rem;
   }
 
   &-input--filter {
@@ -20,6 +97,7 @@
     border: none;
     background-color: rgba(170,179,199, .4);
     outline: none;
+    z-index: 20;
   }
 
   &-back {

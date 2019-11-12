@@ -1,0 +1,74 @@
+.pokemon-profile {
+
+  width: 100%;
+  height: auto;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  
+  
+  &__list-title {
+    
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    margin-right: 5%;
+
+    &--item {
+      font-size: 2rem;
+      color: var(--grey);
+
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+    }
+  }
+
+  &__list-information {
+
+    width: 63%;
+    display: flex;
+    flex-direction: column;
+
+    &--item {
+      font-size: 2rem;
+      color: var(--black);
+
+      &:nth-child(4),
+      &:nth-child(5) {
+        display: inline-flex;
+      }
+      
+      &:nth-child(4) {
+        margin-right: 4rem;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 1.6rem;
+      }
+
+      &--gender {
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      &--female,
+      &--male {
+        font-size: 1.8rem;
+        text-align: center;
+        color: var(--white);
+        font-weight: 700;
+      }
+
+      &--female {
+        background-color: var(--female)
+      }
+
+      &--male {
+        background-color: var(--male);
+      }
+    }
+  }
+
+}

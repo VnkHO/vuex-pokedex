@@ -1,12 +1,18 @@
 <template>
-  <div>Starter</div>
+  <div id="home" class="home">
+    <PokedexStarter />
+  </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<script lang="ts">
+import Vue from "vue";
+import PokedexStarter from "@/components/Starter/Starter.vue";
 
-export default {
-  name: "starter",
-  components: {}
-};
+export default Vue.extend({
+  name: "Starter",
+  components: {
+    PokedexStarter
+  }
+});
 </script>
+

@@ -48,3 +48,34 @@
     transform: translateY(0);
   }
 }
+
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loader */
+@keyframes blinkBtn {
+  from { background: #eee;}
+  to { background: var(--red); }
+}
+
+@keyframes shakePokeball {
+  0% { transform: translate(0, 0) rotate(0); }
+  20% { transform: translate(-1rem, 0) rotate(-20deg); }
+  30% { transform: translate(1rem, 0) rotate(20deg); }
+  50% { transform: translate(-1rem, 0) rotate(-10deg); }
+  60% { transform: translate(1rem, 0) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+@keyframes fallPokeball {
+  0% { top: -30rem }
+  60% { top: 0 }
+  80% { top: -2.4rem }
+  100% { top: 0 }
+}

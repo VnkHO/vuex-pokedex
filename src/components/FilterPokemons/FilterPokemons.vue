@@ -13,7 +13,7 @@ export default {
         return this.$store.getters.searchWord;
       },
       set(this: any, value: string): any {
-        this.$store.dispatch("filteredPokemons", value);
+        this.$store.dispatch("pokemons/filteredPokemons", value);
       }
     }
   }

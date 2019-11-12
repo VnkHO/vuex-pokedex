@@ -1,0 +1,42 @@
+.pokemon-information {
+
+  width: 100%;
+  height: auto;
+  z-index: 1;
+
+  &__description {
+
+    &--flavor {
+      font-size: 1.6rem;
+      line-height: 1.4em;
+      margin-bottom: 2rem;
+    }
+
+    &-container--size {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 6px;
+      box-shadow: 5px 5px 10px 1px rgba(169, 178, 199, .7);
+    }
+
+    &-size {
+
+      display: flex;
+      flex-direction: column;
+      
+      &--title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--grey);
+        margin-bottom: 1rem;
+      }
+
+      &--text {
+        font-size: 1.8rem;
+        color: var(--black);
+      }
+    }
+  }
+}

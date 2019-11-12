@@ -1,15 +1,20 @@
 <template>
   <div id="pokedexList" class="pokedexList">
-    <h2 class="pokedexList-title">Pokedex</h2>
+    <header class="pokedexList__header">
+      <a class="pokedexList__back" @click="$router.go(-1)"></a>
+      <h2 class="pokedexList-title">Pokedex</h2>
+    </header>
     <FilterPokemons
       class="pokedexList-input--filter"
       aria-placeholder="Search your pokemon..."
       placeholder="Search your pokemon..."
     />
-    <div v-if="pokemons.length === 0">Loading....</div>
+    <div class="pokedexList-Loader" v-if="getPokedex.length === 0">
+      <Loader />
+    </div>
     <section v-else class="pokedexList-section">
       <article
-        v-for="(pokemon, index) in (pokemons)"
+        v-for="(pokemon, index) in (filtersPokemons || getPokedex)"
         class="pokedexList-container"
         :key="pokemon.name"
         :class="[
@@ -30,18 +35,26 @@
           <PokemonImage :pokemon="pokemon" class="pokedexList-Image" />
         </router-link>
       </article>
+      <!-- <div class="pokedexList-pagination">
+        <p @click.prevent="loadMorePokemon" class="pokedexList-pagination--text">More</p>
+      </div>-->
     </section>
   </div>
 </template>
 
 <script lang="ts">
-import { mapState, mapGetters } from "vuex";
+import { createNamespacedHelpers } from "vuex";
+const { mapGetters, mapState, mapActions } = createNamespacedHelpers(
+  "pokemons"
+);
 
 import FilterPokemons from "@/components/FilterPokemons/FilterPokemons.vue";
 
 import PokemonType from "@/components/PokemonType/PokemonType.vue";
 import PokemonOrder from "@/components/PokemonOrder/PokemonOrder.vue";
 import PokemonImage from "@/components/PokemonImage/PokemonImage.vue";
+
+import Loader from "@/components/Loader/Loader.vue";
 
 import "../Pokedex/Pokedex.scss";
 
@@ -51,10 +64,12 @@ export default {
     FilterPokemons,
     PokemonType,
     PokemonOrder,
-    PokemonImage
+    PokemonImage,
+    Loader
   },
   created(this: any) {
     this.$store.dispatch("pokemons/fetchPokemons");
+    this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   methods: {
     renderClass: function(type: any): string {
@@ -81,7 +96,8 @@ export default {
     }
   },
   computed: {
-    ...mapState("pokemons", ["pokemons"])
+    ...mapState(["pokemonsSpecies"]),
+    ...mapGetters(["getPokedex", "filtersPokemons"])
   }
 };
 </script>

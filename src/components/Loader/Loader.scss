@@ -1,0 +1,51 @@
+.pokedexList-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  &__pokeball {
+    position: relative;
+    width: 22.2rem;
+    height: 22.2rem;
+    background: #fff;
+    border: 10px solid var(--black);
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: inset -10px 10px 0 10px #ccc;
+    animation: fallPokeball .25s ease-in-out, shakePokeball 1.25s cubic-bezier(.36,.07,.19,.97) 3;
+
+    &::before,
+    &::after {
+      content:"";
+      position: absolute;
+    }
+
+    &::before {
+      width: 100%;
+      height: 50%;
+      background: var(--red);
+    }
+
+    &::after {
+      top: calc(50% - 1.1rem);
+      width: 100%;
+      height: 2.2rem;
+      background: var(--black);
+    }
+
+    &-btn {
+      position: absolute;
+      top: calc(50% - 3.3rem);
+      left: calc(50% - 3.3rem);
+      width: 6.6rem;
+      height: 6.6rem;
+      background: #7f8c8d;
+      border: 10px solid var(--white);
+      border-radius: 50%;
+      z-index: 10;
+      box-shadow: 0 0 0 10px var(--black);
+      animation: blinkBtn .5s alternate 7;
+    }
+  }
+}
