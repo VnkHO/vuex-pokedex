@@ -63,7 +63,7 @@ export default {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   methods: {
-    renderGenera: function(this: any) {
+    renderGenera: function(this: any): void {
       // Render Genera
       const pokemon = this.pokemonsSpecies;
       return pokemon.genera.some((genera: any) => {

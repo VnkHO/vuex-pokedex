@@ -22,20 +22,15 @@ export interface Pokemon {
 export interface PokemonState {
   pokemons?: [];
   pokemonsSpecies?: [];
-  byPokemon?: [];
   filteredPokemons: null;
   searchWord: string;
   id: number;
 }
 
-export interface PokemonActions {
 
-}
-
-export interface PokemonGetters {
-
-}
-
-export interface PokemonMutations {
-
+export interface PokedexInfo {
+  id: number;
+  name: string;
+  types: string;
+  sprites: Object;
 }

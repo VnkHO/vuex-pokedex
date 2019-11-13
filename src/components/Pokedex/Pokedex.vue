@@ -2,7 +2,7 @@
   <div id="pokedexList" class="pokedexList">
     <header class="pokedexList__header">
       <a class="pokedexList__back" @click="$router.go(-1)"></a>
-      <h2 class="pokedexList-title">Pokedex</h2>
+      <h1 class="pokedexList-title">Pokedex</h1>
     </header>
     <FilterPokemons
       class="pokedexList-input--filter"

@@ -138,7 +138,7 @@ export default {
     }, 10);
   },
   methods: {
-    renderStat(this: any) {
+    renderStat(this: any): void {
       const pokemon = this.getPokemonById;
       pokemon.stats.map((stat: any) => {
         switch (stat.stat.name) {

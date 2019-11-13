@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import { PokemonState, Pokemon } from '@/models/pokemon.ts';
+import { PokemonState, PokedexInfo, Pokemon } from '@/models/pokemon.ts';
+import { randomNumber } from '@/utils/Random.ts';
 import { Module } from 'vuex';
 
 const pokemons: Module<{}, any> = {
@@ -16,7 +17,7 @@ const pokemons: Module<{}, any> = {
 
   getters: {
     // Get Pokemons for Pokedex
-    getPokedex(state: any) {
+    getPokedex(state: any): PokedexInfo[] {
       return state.pokemons.map((pokemon: any) => {
         const pokedexInfo = {
           id: pokemon.id,
@@ -30,35 +31,71 @@ const pokemons: Module<{}, any> = {
       })
     },
     // Get the current pokemon when clicked on Pokedex
-    getPokemonById(state: any) {
+    getPokemonById(state: any): Pokemon[] {
       const id = parseInt(state.id)
       return state.pokemons.filter((pokemon: any) => {
         const pokemonId = parseInt(pokemon.id)
         return pokemonId === id
       })
     },
+    // Generate 6 unique random numbers and shuffle it
+    getPokemonGame(state: any): any {
+      const { pokemons } = state
+      if (pokemons.length !== 0) {
 
+        // Get 6 unique random numbers
+        const result: any[] = [];
+        const numbersArr: any[] = [];
+
+        pokemons.map((pokemon: any) => {
+          const pokemonInfo = {
+            id: pokemon.id,
+            image: pokemon.sprites.front_default
+          }
+          numbersArr.push(pokemonInfo)
+        })
+
+        if (numbersArr.length === pokemons.length) {
+          while (result.length < 6) {
+            const randomIndex = randomNumber(numbersArr.length)
+            result.push(numbersArr[randomIndex]);
+            numbersArr.splice(randomIndex, 1);
+          }
+        }
+
+        // Shuffle
+        const myPokemons = [...result, ...result]
+        function shuffle(array: any): any {
+          for (let i = array.length - 1; i > 0; i--) {
+            const index = Math.floor(Math.random() * (i + 1));
+            [array[i], array[index]] = [array[index], array[i]];
+          }
+          return array
+        }
+        return shuffle(myPokemons);
+      }
+    },
     // Get the current pokemon id + 1
-    getPokemonByIdPlusOne(state: any) {
-      const id = parseInt(state.id) + 1
-      const latestId = (state.pokemons.length - 1)
-      if (id !== latestId) {
-        return state.pokemons.filter((pokemon: any) => {
-          const pokemonId = parseInt(pokemon.id)
-          return pokemonId === id
-        })
-      }
-    },
+    // getPokemonByIdPlusOne(state: any) {
+    //   const id = parseInt(state.id) + 1
+    //   const latestId = (state.pokemons.length - 1)
+    //   if (id !== latestId) {
+    //     return state.pokemons.filter((pokemon: any) => {
+    //       const pokemonId = parseInt(pokemon.id)
+    //       return pokemonId === id
+    //     })
+    //   }
+    // },
     // Get the current pokemon id - 1
-    getPokemonByIdMinusOne(state: any) {
-      const id = parseInt(state.id) - 1
-      if (id !== 1) {
-        return state.pokemons.filter((pokemon: any) => {
-          const pokemonId = parseInt(pokemon.id)
-          return pokemonId === id
-        })
-      }
-    },
+    // getPokemonByIdMinusOne(state: any) {
+    //   const id = parseInt(state.id) - 1
+    //   if (id !== 1) {
+    //     return state.pokemons.filter((pokemon: any) => {
+    //       const pokemonId = parseInt(pokemon.id)
+    //       return pokemonId === id
+    //     })
+    //   }
+    // },
     filtersPokemons: (state: any) => state.filteredPokemons,
   },
   mutations: {
@@ -112,7 +149,7 @@ const pokemons: Module<{}, any> = {
     },
 
     // Function to get pokemon's species
-    async fetchPokemonsSpecies({ state, commit }: any) {
+    async fetchPokemonsSpecies({ state, commit }: any): Promise<any> {
       const { pokemonsSpecies, id } = state
       if (!pokemonsSpecies['pokemonsSpecies']) {
         const URL = "https://pokeapi.co/api/v2/pokemon-species/";
