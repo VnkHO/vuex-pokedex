@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <section class="game" id="game">
     <div v-if="start" class="game__starter">
       <h1 class="game__title">Pokememory !</h1>
@@ -37,55 +37,55 @@
       </article>
     </section>
   </section>
-</template>
+</template> -->
 
 <script lang="ts">
-import { createNamespacedHelpers } from "vuex";
-const { mapGetters, mapState, mapActions } = createNamespacedHelpers(
-  "pokemons"
-);
-import Loader from "@/components/Loader/Loader.vue";
-import "../Game/Game.scss";
-export default {
-  name: "Game",
-  components: {
-    Loader
-  },
-  data() {
-    return {
-      start: true,
-      // isActive: false,
-      selected: undefined,
-      hasFlippedCard: false,
-      firstCard: null,
-      secondCard: null
-    };
-  },
-  created(this: any) {
-    this.$store.dispatch("pokemons/fetchPokemons");
-  },
-  methods: {
-    flipCard: function(pokemon: any, event: any) {
-      this.selected = pokemon.uniqueId;
-      let hasFlippedCard = this.hasFlippedCard;
-      let firstCard = this.firstCard;
-      let secondCard = this.secondCard;
-      if (!hasFlippedCard) {
-        hasFlippedCard = true;
-        firstCard = event;
-        console.log("Has flipped card :", hasFlippedCard);
-        console.log("firstCard :", firstCard);
-      } else {
-        hasFlippedCard = false;
-        secondCard = event;
-        console.log("ELLSE Has flipped card :", hasFlippedCard);
-        console.log("firstCard :", firstCard);
-        console.log("ELLLSE SECONDCARD :", secondCard);
-      }
-    }
-  },
-  computed: {
-    ...mapGetters(["getPokemonGame"])
-  }
-};
+// import { createNamespacedHelpers } from "vuex";
+// const { mapGetters, mapState, mapActions } = createNamespacedHelpers(
+//   "pokemons"
+// );
+// import Loader from "@/components/Loader/Loader.vue";
+// import "../Game/Game.scss";
+// export default {
+//   name: "Game",
+//   components: {
+//     Loader
+//   },
+//   data() {
+//     return {
+//       start: true,
+//       // isActive: false,
+//       selected: undefined,
+//       hasFlippedCard: false,
+//       firstCard: null,
+//       secondCard: null
+//     };
+//   },
+//   created(this: any) {
+//     this.$store.dispatch("pokemons/fetchPokemons");
+//   },
+//   methods: {
+//     flipCard: function(pokemon: any, event: any) {
+//       this.selected = pokemon.uniqueId;
+//       let hasFlippedCard = this.hasFlippedCard;
+//       let firstCard = this.firstCard;
+//       let secondCard = this.secondCard;
+//       if (!hasFlippedCard) {
+//         hasFlippedCard = true;
+//         firstCard = event;
+//         console.log("Has flipped card :", hasFlippedCard);
+//         console.log("firstCard :", firstCard);
+//       } else {
+//         hasFlippedCard = false;
+//         secondCard = event;
+//         console.log("ELLSE Has flipped card :", hasFlippedCard);
+//         console.log("firstCard :", firstCard);
+//         console.log("ELLLSE SECONDCARD :", secondCard);
+//       }
+//     }
+//   },
+//   computed: {
+//     ...mapGetters(["getPokemonGame"])
+//   }
+// };
 </script>
