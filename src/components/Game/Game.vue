@@ -72,12 +72,12 @@ export default {
       let secondCard = this.secondCard;
       if (!hasFlippedCard) {
         hasFlippedCard = true;
-        firstCard = event.target;
+        firstCard = event;
         console.log("Has flipped card :", hasFlippedCard);
         console.log("firstCard :", firstCard);
       } else {
         hasFlippedCard = false;
-        secondCard = event.target;
+        secondCard = event;
         console.log("ELLSE Has flipped card :", hasFlippedCard);
         console.log("firstCard :", firstCard);
         console.log("ELLLSE SECONDCARD :", secondCard);

@@ -12,7 +12,7 @@
       </div>
     </div>
     <p class="Error-title--secondary">Sorry, we can't find the page.</p>
-    <a class="Error-link" @click="$router.go(-1)">Go back</a>
+    <router-link tag="a" class="Error-link" to="/home">Go back</router-link>
   </div>
 </template>
 

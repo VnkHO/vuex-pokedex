@@ -17,7 +17,7 @@ export const getPokedex = (state: any): any => {
   })
 }
 
-export const filtersPokemons = (state: any) => state.filteredPokemons,
+export const filtersPokemons = (state: any) => state.filteredPokemons
 
 // Get the current pokemon when clicked on Pokedex
 export const getPokemonById = (state: any): any => {

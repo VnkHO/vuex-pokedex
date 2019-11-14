@@ -5,7 +5,7 @@ import Starter from '../views/Starter.vue';
 import Home from '../views/Home.vue';
 import Pokedex from '../views/Pokedex.vue';
 import Pokemon from '../views/Pokemon.vue';
-import Game from '../views/Game.vue';
+// import Game from '../views/Game.vue';
 import Error404 from '../views/Error.vue';
 
 Vue.use(VueRouter);
@@ -31,11 +31,11 @@ const routes = [
     name: 'pokemon',
     component: Pokemon
   },
-  {
-    path: '/game',
-    name: 'game',
-    component: Game,
-  },
+  // {
+  //   path: '/game',
+  //   name: 'game',
+  //   component: Game,
+  // },
   {
     path: '*',
     name: 'Error',
