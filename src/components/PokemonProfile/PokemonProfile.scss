@@ -33,10 +33,9 @@
       font-size: 2rem;
       color: var(--black);
 
-      &:nth-child(4),
-      &:nth-child(5) {
+      &:nth-child(4) {
         display: inline-flex;
-        margin-right: 6rem;
+        margin-right: 4rem;
       }
 
       &:not(:last-child) {
@@ -68,4 +67,9 @@
     }
   }
 
+}
+
+.pokemon-profile__list-information--item:nth-child(5) {
+    display: inline-flex;
+    margin-right: 6rem;
 }

@@ -35,7 +35,7 @@ export default {
       description: ""
     };
   },
-  created(this: any) {
+  created(this: any): void {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   methods: {
@@ -76,7 +76,6 @@ export default {
     }
   },
   beforeMount(this: any): void {
-    // let self = this;
     this.$nextTick((): void => {
       this.renderFlavor();
       return;

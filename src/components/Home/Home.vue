@@ -21,7 +21,7 @@ import "../Home/Home.scss";
 
 export default {
   name: "homescreen",
-  created(this: any) {
+  created(this: any): void {
     this.$store.dispatch("pokemons/fetchPokemons");
   },
   computed: {

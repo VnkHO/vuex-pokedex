@@ -1,7 +1,7 @@
 <template>
   <div id="pokedexList" class="pokedexList">
     <header class="pokedexList__header">
-      <a class="pokedexList__back" @click="$router.go(-1)"></a>
+      <router-link tag="a" class="pokedexList__back" to="/home"></router-link>
       <h1 class="pokedexList-title">Pokedex</h1>
     </header>
     <FilterPokemons
@@ -35,9 +35,6 @@
           <PokemonImage :pokemon="pokemon" class="pokedexList-Image" />
         </router-link>
       </article>
-      <!-- <div class="pokedexList-pagination">
-        <p @click.prevent="loadMorePokemon" class="pokedexList-pagination--text">More</p>
-      </div>-->
     </section>
   </div>
 </template>

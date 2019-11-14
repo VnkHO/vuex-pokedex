@@ -2,6 +2,7 @@
   <section class="game" id="game">
     <div v-if="start" class="game__starter">
       <h1 class="game__title">Pokememory !</h1>
+      <h2 class="game__beta">BETA Version</h2>
       <div class="game__starter-container">
         <p class="game__starter-text">Pokemomry est un jeu de mémoire.</p>
         <p
@@ -15,8 +16,8 @@
     </div>
     <section v-else class="game__memory-game">
       <article
-        ref="card"
         class="game__memory-card"
+        :class="{isFlip: pokemon.uniqueId === selected}"
         v-for="(pokemon, index) in getPokemonGame"
         :key="index"
       >
@@ -24,7 +25,7 @@
           class="game__memory-images"
           :data-id="pokemon.id"
           :data-index="index"
-          @click.prevent="check(pokemon, $event)"
+          @click="flipCard(pokemon, $event)"
         >
           <img class="game__memory-card--front" :src="pokemon.image" :alt="pokemon.image" />
           <img
@@ -55,16 +56,38 @@ export default {
   },
   data() {
     return {
-      start: true
+      start: true,
+      // isActive: false,
+      selected: undefined,
+      hasFlippedCard: false,
+      firstCard: null,
+      secondCard: null
     };
   },
   created(this: any) {
     this.$store.dispatch("pokemons/fetchPokemons");
   },
   methods: {
-    check: function(pokemon: any, event: any) {
-      console.log("pokemon :", pokemon);
-      console.log("event :", event);
+    flipCard: function(pokemon: any, event: any) {
+      this.selected = pokemon.uniqueId;
+      let hasFlippedCard = this.hasFlippedCard;
+      let firstCard = this.firstCard;
+      let secondCard = this.secondCard;
+      if (!hasFlippedCard) {
+        hasFlippedCard = true;
+        firstCard = event.target;
+
+        console.log("Has flipped card :", hasFlippedCard);
+        console.log("firstCard :", firstCard);
+      } else {
+        hasFlippedCard = false;
+        secondCard = event.target;
+
+        console.log("ELLSE Has flipped card :", hasFlippedCard);
+        console.log("firstCard :", firstCard);
+
+        console.log("ELLLSE SECONDCARD :", secondCard);
+      }
     }
   },
   computed: {

@@ -25,7 +25,7 @@ import "../PokemonMoves/PokemonMoves.scss";
 
 export default {
   name: "PokemonMoves",
-  created(this: any) {
+  created(this: any): void {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   computed: {
@@ -45,13 +45,6 @@ export default {
         })
         .slice(0, 4);
     }
-  },
-  beforeMount(): void {
-    // let self = this;
-    // this.$nextTick((): void => {
-    //   this.renderFlavor();
-    //   return;
-    // });
   }
 };
 </script>

@@ -59,7 +59,7 @@ export default {
       ]
     };
   },
-  created(this: any) {
+  created(this: any): void {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   methods: {

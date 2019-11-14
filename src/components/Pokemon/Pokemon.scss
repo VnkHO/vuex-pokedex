@@ -1,5 +1,41 @@
+@import '../../assets/styles/abstracts/mixins.scss';
+
+
 .pokemon {
   
+  &-loading {
+    @include flexColumnCenter;
+
+    width: 100%;
+    height: 100vh;
+    
+    &--load {
+      text-align: center;
+      font-size: 5rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &-refresh {
+    @include flexColumnCenter;
+
+    &--text {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    &--link {
+      display: inline-block;
+      font-size: 2rem;
+      padding: 1.5rem 4rem;
+      text-align: center;
+      color: var(--white);
+      border-radius: 20rem;
+      background-color: var(--red);
+    }
+
+  }
 
   &-section {
     width: 100%;
@@ -42,9 +78,7 @@
   }
 
   &-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flexSpaceBetween;
     font-size: 1.8rem;
     padding: 1rem;
     margin-bottom: 2rem;
@@ -111,14 +145,12 @@
   }
 
   &-Image {
+    @include flexCenter;
     position: relative;
     top: -2.5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     & > img {
       width: 60%;
@@ -167,11 +199,9 @@
 
 
       &-list {
+        @include flexSpaceBetween;
         width: 100%;
         height: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         margin-bottom: 2rem;
 
         &--item {

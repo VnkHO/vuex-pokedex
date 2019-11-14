@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    orderPokemon(this: any): any {
+    orderPokemon(this: any): number {
       return this.pokemon.id.toString().length;
     }
   }

@@ -61,8 +61,6 @@
 </template>
 
 <script lang="ts">
-import pokemons from "../../store/modules/pokemons";
-
 import "../PokemonStat/PokemonStat.scss";
 
 export default {

@@ -40,15 +40,11 @@
 
       &::before,
       &::after {
+        @include absoluteCenter;
         content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
         display: block;
         border-radius: 50%;
         background-color: var(--white);
-
-        transform: translate(-50%, -50%);
       }
 
       &::before {

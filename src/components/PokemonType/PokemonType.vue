@@ -9,19 +9,17 @@
 </template>
 
 <script lang="ts">
+import { createNamespacedHelpers } from "vuex";
+const { mapGetters } = createNamespacedHelpers("pokemons");
+
 import { capitalizeFirstLetter } from "@/utils/Capitalize.ts";
 
 export default {
   name: "PokemonType",
-  props: {
-    pokemon: {
-      type: Object,
-      required: true
-    }
-  },
   methods: {
     renderClass: function(this: any, id: number): string {
-      const type = this.pokemon.types[id].type.name;
+      const pokemons = this.getPokemonById[0];
+      const type = pokemons.types[id].type.name;
       return `
           'bug': ${type} === 'bug',
           'dark': ${type} === 'dark',
@@ -45,8 +43,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["getPokemonById"]),
     typePokemon(this: any): string {
-      return this.pokemon.types.map((type: any) =>
+      const pokemons = this.getPokemonById[0];
+      return pokemons.types.map((type: any) =>
         capitalizeFirstLetter(type.type.name)
       );
     }

@@ -14,7 +14,7 @@ export default {
     }
   },
   methods: {
-    renderFrontDefaultImage(this: any): any {
+    renderFrontDefaultImage(this: any): string {
       return this.pokemon.sprites.front_default;
     }
   }

@@ -1,13 +1,19 @@
 <template>
   <div class="pokemon" id="pokemon">
-    <div v-if="getPokemonById.length === 0">Looading</div>
+    <div class="pokemon-loading" v-if="getPokemonById.length === 0">
+      <p class="pokemon-loading--load">Loooading ...</p>
+      <div class="pokemon-refresh">
+        <p
+          class="pokemon-refresh--text"
+        >Si vous avez rafraîchi la page, veuillez revenir sur le Pokedex</p>
+        <router-link to="/pokedex" tag="p" class="pokemon-refresh--link">Retour Pokedex</router-link>
+      </div>
+    </div>
 
     <section class="pokemon-section" v-else>
       <article class="pokemon-article" :class="renderClass(getPokemonById[0].types[0].type.name)">
         <header class="pokemon-header">
-          <a title="Pokédex" class="pokemon-header__back" @click="$router.go(-1)">Pokédex</a>
-          <p v-if="true" class="pokemon-header__fav">Add Favorite</p>
-          <p v-else class="pokemon-header__fav">Added</p>
+          <router-link tag="a" class="pokemon-header__back" to="/pokedex">Pokédex</router-link>
         </header>
         <div class="pokemon-title__container">
           <h1 class="pokemon-title__primary">{{getPokemonById[0].name}}</h1>
@@ -56,7 +62,6 @@
           <transition name="slide-fade">
             <PokemonMoves v-show="showMoves" />
           </transition>
-          <!-- ?? -->
         </div>
       </article>
     </section>
@@ -153,11 +158,7 @@ export default {
   },
   computed: {
     ...mapState(["pokemonsSpecies", "getPokemonStat"]),
-    ...mapGetters([
-      "getPokemonById",
-      "getPokemonByIdPlusOne",
-      "getPokemonByIdMinusOne"
-    ])
+    ...mapGetters(["getPokemonById"])
   }
 };
 </script>

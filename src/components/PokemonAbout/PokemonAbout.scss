@@ -1,3 +1,5 @@
+@import '../../assets/styles/abstracts/mixins.scss';
+
 .pokemon-information {
 
   width: 100%;
@@ -13,9 +15,7 @@
     }
 
     &-container--size {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flexSpaceBetween;
       padding: 2rem;
       border-radius: 6px;
       box-shadow: 5px 5px 10px 1px rgba(169, 178, 199, .7);
