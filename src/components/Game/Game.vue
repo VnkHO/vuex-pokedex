@@ -44,11 +44,8 @@ import { createNamespacedHelpers } from "vuex";
 const { mapGetters, mapState, mapActions } = createNamespacedHelpers(
   "pokemons"
 );
-
 import Loader from "@/components/Loader/Loader.vue";
-
 import "../Game/Game.scss";
-
 export default {
   name: "Game",
   components: {
@@ -76,16 +73,13 @@ export default {
       if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = event.target;
-
         console.log("Has flipped card :", hasFlippedCard);
         console.log("firstCard :", firstCard);
       } else {
         hasFlippedCard = false;
         secondCard = event.target;
-
         console.log("ELLSE Has flipped card :", hasFlippedCard);
         console.log("firstCard :", firstCard);
-
         console.log("ELLLSE SECONDCARD :", secondCard);
       }
     }
