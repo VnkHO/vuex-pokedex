@@ -17,6 +17,9 @@ Aller sur: http://localhost:8080/
 
 Et enjoy !
 
+Ah si vous voulez directement le voir sur mobile:
+
+[Vuex pokedex](https://vuex-pokedex.netlify.com/)
 
 ## Project setup
 ```
