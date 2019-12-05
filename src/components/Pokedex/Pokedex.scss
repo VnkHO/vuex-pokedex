@@ -6,6 +6,7 @@
   background-color: var(--white);
   
   &-Loader {
+    display: block;
     position: relative;
     width: 100%;
     height: calc(100vh - 35vh);
@@ -67,6 +68,13 @@
     font-size: 4.2rem;
     font-weight: 900;
     margin-left: 6rem;
+  }
+
+  &-title--secondary {
+    font-size: 2rem;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 2.4rem;
   }
 
   &-input--filter {
@@ -208,7 +216,6 @@
   article.pokedexList-container__animation--#{$i} {
     animation-name: displayPokemon;
     animation-delay: calc(var(--delay) * #{$i});
-    animation-duration: 1s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in-out;

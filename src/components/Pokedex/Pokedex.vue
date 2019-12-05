@@ -18,9 +18,9 @@
         class="pokedexList-container"
         :key="pokemon.name"
         :class="[
-          `pokedexList-container__animation--${index + 1}`,
-          renderClass(pokemon.types[0].type.name)
-          ]"
+          pokemon.types[0].type.name,
+          `pokedexList-container__animation--${index + 1}`
+        ]"
       >
         <router-link
           class="pokedexList-link"
@@ -68,32 +68,7 @@ export default {
     this.$store.dispatch("pokemons/fetchPokemons");
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
-  methods: {
-    renderClass: function(type: any): string {
-      return `
-          'bug': ${type} === 'bug',
-          'dark': ${type} === 'dark',
-          'dragon': ${type} === 'dragon',
-          'electric': ${type} === 'electric',
-          'fairy': ${type} === 'fairy',
-          'fighting': ${type} === 'fighting',
-          'fire': ${type} === 'fire',
-          'flying': ${type} === 'flying',
-          'ghost': ${type} === 'ghost',
-          'grass': ${type} === 'grass',
-          'ground': ${type} === 'ground',
-          'ice': ${type} === 'ice',
-          'normal': ${type} === 'normal',
-          'poison': ${type} === 'poison',
-          'psychic': ${type} === 'psychic',
-          'rock': ${type} === 'rock',
-          'steel': ${type} === 'steel',
-          'water': ${type} === 'water',
-        `;
-    }
-  },
   computed: {
-    ...mapState(["pokemonsSpecies"]),
     ...mapGetters(["getPokedex", "filtersPokemons"])
   }
 };

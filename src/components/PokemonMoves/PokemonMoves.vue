@@ -29,7 +29,6 @@ export default {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
   },
   computed: {
-    ...mapState(["pokemonsSpecies"]),
     ...mapGetters(["getPokemonById"]),
     abilities(this: any): String[] {
       const pokemon = this.getPokemonById[0];

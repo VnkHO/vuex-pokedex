@@ -6,12 +6,12 @@
         <p
           class="pokemon-refresh--text"
         >Si vous avez rafraîchi la page, veuillez revenir sur le Pokedex</p>
-        <router-link to="/pokedex" tag="p" class="pokemon-refresh--link">Retour Pokedex</router-link>
+        <router-link to="/pokedex" tag="a" class="pokemon-refresh--link">Retour Pokedex</router-link>
       </div>
     </div>
 
     <section class="pokemon-section" v-else>
-      <article class="pokemon-article" :class="renderClass(getPokemonById[0].types[0].type.name)">
+      <article class="pokemon-article" :class="getPokemonById[0].types[0].type.name">
         <header class="pokemon-header">
           <router-link tag="a" class="pokemon-header__back" to="/pokedex">Pokédex</router-link>
         </header>
@@ -25,42 +25,42 @@
           <nav class="pokemon-information__nav">
             <ul class="pokemon-information__nav-list">
               <li
-                @click="renderAbout()"
-                :class="{ navIsActive: showAbout}"
+                @click="rendering = 'about'"
+                :class="{ navIsActive: rendering === 'about'}"
                 class="pokemon-information__nav-list--item"
               >About</li>
               <li
-                @click="renderProfile()"
-                :class="{ navIsActive: showProfile}"
+                @click="rendering = 'profile'"
+                :class="{ navIsActive: rendering === 'profile'}"
                 class="pokemon-information__nav-list--item"
               >Profile</li>
               <li
-                @click="renderStat()"
-                :class="{ navIsActive: showStat}"
+                @click="rendering = 'stat'"
+                :class="{ navIsActive: rendering === 'stat'}"
                 class="pokemon-information__nav-list--item"
               >Base Stats</li>
               <li
-                @click="renderMoves()"
-                :class="{ navIsActive: showMoves}"
+                @click="rendering = 'moves'"
+                :class="{ navIsActive: rendering === 'moves'}"
                 class="pokemon-information__nav-list--item"
               >Moves</li>
             </ul>
           </nav>
 
           <transition name="slide-fade">
-            <PokemonAbout v-show="showAbout" />
+            <PokemonAbout v-show="rendering === 'about'" />
           </transition>
 
           <transition name="slide-fade">
-            <PokemonStat v-if="showStat" :getPokemonById="getPokemonById[0]" />
+            <PokemonStat v-if="rendering === 'stat'" :getPokemonById="getPokemonById[0]" />
           </transition>
 
           <transition name="slide-fade">
-            <PokemonProfile v-show="showProfile" />
+            <PokemonProfile v-show="rendering === 'profile'" />
           </transition>
 
           <transition name="slide-fade">
-            <PokemonMoves v-show="showMoves" />
+            <PokemonMoves v-show="rendering === 'moves'" />
           </transition>
         </div>
       </article>
@@ -96,10 +96,7 @@ export default {
   },
   data() {
     return {
-      showAbout: true,
-      showStat: false,
-      showProfile: false,
-      showMoves: false
+      rendering: "about"
     };
   },
   created(this: any) {
@@ -107,54 +104,6 @@ export default {
   },
   mounted(this: any): any {
     this.$store.dispatch("pokemons/fetchPokemonsSpecies");
-  },
-  methods: {
-    renderClass: function(type: any): string {
-      return `
-          'bug': ${type} === 'bug',
-          'dark': ${type} === 'dark',
-          'dragon': ${type} === 'dragon',
-          'electric': ${type} === 'electric',
-          'fairy': ${type} === 'fairy',
-          'fighting': ${type} === 'fighting',
-          'fire': ${type} === 'fire',
-          'flying': ${type} === 'flying',
-          'ghost': ${type} === 'ghost',
-          'grass': ${type} === 'grass',
-          'ground': ${type} === 'ground',
-          'ice': ${type} === 'ice',
-          'normal': ${type} === 'normal',
-          'poison': ${type} === 'poison',
-          'psychic': ${type} === 'psychic',
-          'rock': ${type} === 'rock',
-          'steel': ${type} === 'steel',
-          'water': ${type} === 'water',
-        `;
-    },
-    renderAbout(this: any): void {
-      this.showAbout = true;
-      this.showStat = false;
-      this.showProfile = false;
-      this.showMoves = false;
-    },
-    renderStat(this: any): void {
-      this.showAbout = false;
-      this.showStat = true;
-      this.showProfile = false;
-      this.showMoves = false;
-    },
-    renderProfile(this: any): void {
-      this.showAbout = false;
-      this.showStat = false;
-      this.showProfile = true;
-      this.showMoves = false;
-    },
-    renderMoves(this: any): void {
-      this.showAbout = false;
-      this.showStat = false;
-      this.showProfile = false;
-      this.showMoves = true;
-    }
   },
   computed: {
     ...mapState(["pokemonsSpecies", "getPokemonStat"]),
